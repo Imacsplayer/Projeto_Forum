@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function listAllUsers(){
+    public function listAllUsers(Request $request){
         // logica
         return view('users.listAllUsers');
     }
 
-    public function listByID(){
-        return view('users.listByID');
+    public function listUser(Request $request, $uid){
+        print($uid);
     }
 
     public function createUser(){
