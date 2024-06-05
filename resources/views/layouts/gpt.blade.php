@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site Calmo - Tema Escuro</title>
+    <title>Site - Fórum</title>
     <?php
     // Definição das cores para o tema claro
     $cor_fundo_claro = "#f0f5f9";
@@ -65,13 +65,47 @@
         .sidebar ul li a:hover {
             color: #ccc;
         }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        @yield('message')
-        <h1>Meu Site - Tema Escuro</h1>
-    </div>
+    @yield('message')
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
@@ -83,7 +117,6 @@
     </div>
     <div class="content">
         <h2>Conteúdo Principal</h2>
-        <p>Bem-vindo ao meu site! Este é o conteúdo principal. Você pode adicionar mais páginas e conteúdo conforme necessário.</p>
         @yield('header')
         @yield('content')
     </div>
