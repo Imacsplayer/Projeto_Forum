@@ -7,7 +7,7 @@
 @section('content')
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Registrar</h2>
         <form action="{{ route('routeRegisterUser') }}" method="post">
             @csrf
             <input type="text" name="name" id="name" placeholder="Nome" value="{{ old('name') }}" required>

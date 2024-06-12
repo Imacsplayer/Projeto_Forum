@@ -24,6 +24,6 @@ Route::match(
 Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');
     Route::get('/users/{uid}', [UserController::class, 'listUser'])->name('routeListUser');
-    Route::get('/users/{uid}/edit', [UserController::class,'editUser'])->name('routeEditUser');
-    Route::get('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('routeDeleteUser');
+    Route::put('/users/{uid}/update', [UserController::class, 'updateUser'])->name('routeUpdateUser');
+    Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('routeDeleteUser');
 });

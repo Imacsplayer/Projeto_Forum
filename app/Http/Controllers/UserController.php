@@ -16,19 +16,26 @@ class UserController extends Controller
     }
 
     public function listUser(Request $request, $uid){
-        print($uid);
+        $user = User::where('id', $uid)->first();
+        return view('users.profile', ['user' => $user]);
     }
 
-    public function createUser(){
-        return view('users.createUser');
+    public function updateUser(Request $request, $uid) {
+        $user = User::where('id', $uid)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password != '') {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        return redirect()->route('routeListUser', [$user->id])
+                    ->with('message', 'Atualizado com sucesso!');
     }
 
-    public function editUser(){
-        return view('users.editUser');
-    }
-
-    public function deleteUser(){
-        return view('users.deleteUser');
+    public function deleteUser(Request $request, $uid) {
+        User::where('id', $uid)->delete();
+        return redirect()->route('routeListAllUsers')
+                    ->with('message', 'Deletado com sucesso!');
     }
 
     public function registerUser(Request $request) {
