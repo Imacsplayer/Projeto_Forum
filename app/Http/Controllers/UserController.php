@@ -9,12 +9,6 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function welcomeUser()
-    {
-        // logica
-        return view('welcome'); //página inicial
-    }
-
     public function listAllUsers(Request $request)
     {
         // logica

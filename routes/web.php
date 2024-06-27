@@ -11,17 +11,27 @@ Route::match(
     [AuthController::class, 'loginUser']
 )->name('routeLogin');
 
-Route::post('/logout',
-    [AuthController::class, 'logoutUser']
-)->name('routeLogout');
-
 Route::match(
     ['get', 'post'], 
     '/register', 
     [UserController::class, 'registerUser']
 )->name('routeRegisterUser');
 
-Route::get('/', [UserController::class, 'welcomeUser'])->name('routeWelcomeUser');
+
+
+
+
+Route::post('/logout', [AuthController::class, 'logoutUser'])->name('routeLogout');
+
+Route::Post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
+
+
+Route::get('/', 
+    [AuthController::class, 'teste']
+)->name('teste');
 
 Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');

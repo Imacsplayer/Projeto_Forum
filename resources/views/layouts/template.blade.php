@@ -50,7 +50,7 @@
         }
 
         ul li a:hover {
-            background: #112C66;
+            background: #295e2b;
         }
 
         ul li:hover ul.dropdown {
@@ -70,10 +70,11 @@
 
 <body>
     <header>
+
         <ul>
             <div>
                 <li>
-                    <a href="{{ route('routeWelcomeUser') }}">TECH TREE</a>
+                    <a href="{{ route('teste') }}">TECH TREE</a>
                 </li>
                 <li>
                     <a href="#">Tópicos ▼</a>
@@ -84,10 +85,30 @@
                     </ul>
                 </li>
             </div>
+
             <div>
-                <a href="{{ route('routeRegisterUser') }}">Cadastro</a>
-                <a href="{{ route('routeLogin') }}">Login</a>
+                <li>
+                    @auth
+                    <a href="{{ route('routeListUser', [Auth::user()->id]) }}">
+                        Meu Perfil
+                    </a>
+                </li>
+
+                <li class="logout">
+                    <a href="{{route('routeLogout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
+                    <form id="logout-form" action="{{route('routeLogout')}}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+                <li>
+                    @else
+                    <a href="{{ route('routeRegisterUser') }}">Cadastro</a>
+                    <a href="{{ route('routeLogin') }}">Login</a>
+                    @endauth
+
+                </li>
             </div>
+
         </ul>
         <main>
             @yield('content')

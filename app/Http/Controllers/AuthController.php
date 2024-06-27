@@ -12,22 +12,28 @@ class AuthController extends Controller
             return view('auth.login');  
         } else {    
                 $credentials = $request->validate([
-                                        'email' => 'required|string|email',
-                                        'password' => 'required|string'
+                        'email' => 'required|string|email',
+                        'password' => 'required|string'
                 ]);
             if (Auth::attempt($credentials)) {
                 return redirect()
-                    ->intended('/users')
-                    ->with('success', 'Login realizado com sucesso.');
+                        ->route('teste')
+                        ->with('message-sucess', 'Seja Bem Vindo ' . 
+                        Auth::user()->name);
             }
             return back()->withErrors([
                 'email' => 'Credenciais Inválidas.',
             ])->withInput();
         }
+    }   
+
+    public function teste() {
+       
+        return view('welcome');
     }
 
-    public function logoutUser(Request $request) {
+    public function logout(Request $request) {
         Auth::logout();
-        return redirect()->route('routeLogin');
-    }
+        return redirect()->route('routeLogin')->with('message-sucess', 'Logout realizado com sucesso');
+     }
 }

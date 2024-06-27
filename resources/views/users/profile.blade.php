@@ -1,9 +1,5 @@
-@extends('layouts/gpt')
+@extends('layouts.template')
 
-@section('message')
-<div class="header">
-    <h1>Tela de Registro</h1>
-</div>
 @section('content')
 <body>
     <div class="login-container">
