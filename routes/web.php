@@ -11,7 +11,7 @@ Route::match(
     [AuthController::class, 'loginUser']
 )->name('routeLogin');
 
-Route::get('/logout',
+Route::post('/logout',
     [AuthController::class, 'logoutUser']
 )->name('routeLogout');
 
@@ -20,6 +20,8 @@ Route::match(
     '/register', 
     [UserController::class, 'registerUser']
 )->name('routeRegisterUser');
+
+Route::get('/', [UserController::class, 'welcomeUser'])->name('routeWelcomeUser');
 
 Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');
