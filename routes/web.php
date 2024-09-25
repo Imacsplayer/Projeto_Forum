@@ -6,30 +6,23 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 
 Route::match(
-    ['get', 'post'], 
-    '/login', 
+    ['get', 'post'],
+    '/login',
     [AuthController::class, 'loginUser']
 )->name('routeLogin');
 
 Route::match(
-    ['get', 'post'], 
-    '/register', 
+    ['get', 'post'],
+    '/register',
     [UserController::class, 'registerUser']
 )->name('routeRegisterUser');
-
-
-
-
 
 Route::post('/logout', [AuthController::class, 'logoutUser'])->name('routeLogout');
 
 Route::Post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-
-
-
-Route::get('/', 
+Route::get(
+    '/',
     [AuthController::class, 'teste']
 )->name('teste');
 
