@@ -59,7 +59,7 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <form action="{{ route('routeLogin') }}" method="post">
+            <form action="{{ route('routeLogin') }}" method="POST">
                 <h2 class="text">Entre com sua conta de usuário</h2>
                     <input type="email" id="email" name="email" placeholder='Email' class="form-input"
                         value="{{ old('email') }}" required>

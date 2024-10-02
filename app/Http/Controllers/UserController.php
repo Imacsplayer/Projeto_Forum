@@ -40,6 +40,8 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'photo' => $request->photo ?? "",
+                'role' => $request->role ?? "user",
             ]);
 
             Auth::login($user);

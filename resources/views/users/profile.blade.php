@@ -1,7 +1,5 @@
 @extends('layouts.template')
 
-@section('content')
-
 <style>
     .main {
         display: flex;
@@ -46,7 +44,8 @@
         color: #555;
     }
 
-    .edit, .delete {
+    .edit,
+    .delete {
         display: inline-block;
         padding: 10px 15px;
         border: none;
@@ -76,6 +75,8 @@
     }
 </style>
 
+@section('content')
+
 <div class="main">
     <div class="card">
         <p class="title">Suas informações de usuário</p>
@@ -91,10 +92,10 @@
                 </tr>
             </tbody>
         </table>
-        <a href="{{route('routeEditUser', [$user->id])}}" class="edit">Editar usuário &nbsp;
+        <a href="{{route('routeUpdateUser', [$user->id])}}" class="edit">Editar usuário &nbsp;
             <i class="fa-solid fa-pen-to-square"></i>
         </a>
-        
+
         <form action="{{route('routeDeleteUser', [$user->id])}}" method="post">
             @csrf
             @method('delete')
@@ -108,7 +109,7 @@
 </div>
 
 @if($user == null)
-    <div style="text-align: center; color: #dc3545; margin-top: 20px;">Usuário não encontrado!</div>
+<div style="text-align: center; color: #dc3545; margin-top: 20px;">Usuário não encontrado!</div>
 @endif
 
 @endsection
