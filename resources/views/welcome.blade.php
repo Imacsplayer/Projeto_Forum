@@ -30,8 +30,6 @@
     <p>Assim como as árvores crescem e se renovam a cada estação, esperamos que você encontre aqui um espaço para crescimento e renovação. Explore, aprenda e inspire-se com o mundo ao nosso redor.</p>
 </div>
 
-/* para aparecer o post, topic e pá*/
-
 </body>
 </html>
 

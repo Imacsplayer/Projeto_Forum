@@ -59,15 +59,22 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <h2>Login</h2>
             <form action="{{ route('routeLogin') }}" method="post">
-                <input type="email" name="email" placeholder="Email" class="form-input" required>
-                <input type="password" name="password" placeholder="Senha" class="form-input" required>
-                <input type="submit" value="Entrar" class="form-btn">
+                <h2 class="text">Entre com sua conta de usuário</h2>
+                    <input type="email" id="email" name="email" placeholder='Email' class="form-input"
+                        value="{{ old('email') }}" required>
+                    @error('email') <span class="error">{{ $message }}</span> @enderror
+
+                    <input type="password" id="password" name="password" placeholder='Senha' class="form-input" required>
+                    @error('password') <span class="error">{{ $message }}</span> @enderror
+
+                    <input type="submit" value="Entrar" class="form-btn">
+                </div>
             </form>
         </div>
     </div>
 </body>
+
 
 </html>
 

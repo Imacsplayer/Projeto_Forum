@@ -74,38 +74,51 @@
         <ul>
             <div>
                 <li>
-                    <a href="{{ route('teste') }}">TECH TREE</a>
+                    <a href="{{ route('welcome') }}">TECH TREE</a>
                 </li>
                 <li>
                     <a href="#">Tópicos ▼</a>
                     <ul class="dropdown">
-                        <li><a href="#">Posts</a></li>
-                        <li><a href="#">Tópicos</a></li>
-                        <li><a href="#">Tags</a></li>
+                        <li><a href="{{ route('routeListAllTopics') }}">Ver</a></li>
+                        <li><a href="{{ route('routeCreateTopic') }}">Criar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Categorias ▼</a>
+                    <ul class="dropdown">
+                        <li><a href="{{ route('routeListAllCategories') }}">Ver</a></li>
+                        <li><a href="{{ route('routeCreateCategory') }}">Criar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Posts ▼</a>
+                    <ul class="dropdown">
+                        <li><a href="{{ route('routeListAllPosts') }}">Ver</a></li>
+                        <li><a href="{{ route('routeCreatePost') }}">Criar</a></li>
                     </ul>
                 </li>
             </div>
 
             <div>
                 <li>
-                    @auth
-                    <a href="{{ route('routeListUser', [Auth::user()->id]) }}">
-                        Meu Perfil
+                    @if(Auth::check())
+                    <a href="{{ route('routeListUserById', [Auth::user()->id]) }}">
+                        Meu Perfil ({{ Auth::user()->name }})
                     </a>
                 </li>
 
                 <li class="logout">
-                    <a href="{{route('routeLogout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
-                    <form id="logout-form" action="{{route('routeLogout')}}" method="POST" style="display: none;">
+                    <a href="{{route('routeLogout')}}">Sair &nbsp;
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
                         @csrf
                     </form>
                 </li>
                 <li>
                     @else
-                    <a href="{{ route('routeRegisterUser') }}">Cadastro</a>
+                    <a href="{{ route('routeRegister') }}">Cadastro</a>
                     <a href="{{ route('routeLogin') }}">Login</a>
                     @endauth
-
                 </li>
             </div>
 
