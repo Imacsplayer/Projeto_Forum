@@ -78,10 +78,6 @@
             <label for="description" class="form-label">Descrição do Tópico:</label>
             <input type="text" id="description" name="description" class="form-input" value="{{ old('description') }}" required>
             @error("description") <span class="error-message">{{$message}}</span> @enderror
-            
-            <label for="status" class="form-label">Status do Tópico:</label>
-            <input type="number" id="status" name="status" class="form-input" value="{{ old('status') }}" required>
-            @error("status") <span class="error-message">{{$message}}</span> @enderror
         </div>
         <input type="submit" class="submit-button" value="Enviar">
     </form>

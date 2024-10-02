@@ -21,11 +21,11 @@ class TagController extends Controller
         } else {
 
             $request->validate([
-                'title' => 'required|string|max:255',
+                'tagtitle' => 'required|string|max:255',
             ]);
 
             Tag::create([
-                'title' => $request->title,
+                'tagtitle' => $request->title,
             ]);
             $tags = Tag::all();
 

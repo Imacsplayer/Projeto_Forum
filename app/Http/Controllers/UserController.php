@@ -55,15 +55,18 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-
+        if ($request->name != '') {
+            $request->validate(['name' => 'string|max:255']);
+            $user->name = $request->name;
+        }
+        if ($request->email != '') {
+            $request->validate(['email' => 'string|email|max:255|unique:users']);
+            $user->email = $request->email;
+        }
         if ($request->password != '') {
-
+            $request->validate(['password' => 'string|min:8']);
             $user->password = Hash::make($request->password);
         }
-        $user->save();
-
         return redirect()->route('routeListUserById', [$user->id])
             ->with('message-sucess', 'Atualizado com sucesso');
     }

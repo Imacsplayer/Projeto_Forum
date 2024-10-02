@@ -61,6 +61,7 @@
         <div class="form-container">
             <form action="{{ route('routeLogin') }}" method="POST">
                 <h2 class="text">Entre com sua conta de usuário</h2>
+                @csrf
                     <input type="email" id="email" name="email" placeholder='Email' class="form-input"
                         value="{{ old('email') }}" required>
                     @error('email') <span class="error">{{ $message }}</span> @enderror

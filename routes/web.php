@@ -50,7 +50,8 @@ Route::middleware('auth')->group(function () {
         [UserController::class, 'listUserById']
     )->name('routeListUserById');
 
-    Route::put(
+    Route::match(
+        ['get','post'],
         '/users/{id}/update',
         [UserController::class, 'updateUser']
     )->name('routeUpdateUser');

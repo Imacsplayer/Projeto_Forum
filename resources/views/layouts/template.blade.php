@@ -97,6 +97,13 @@
                         <li><a href="{{ route('routeCreatePost') }}">Criar</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">Tags ▼</a>
+                    <ul class="dropdown">
+                        <li><a href="{{ route('routeListAllTags') }}">Ver</a></li>
+                        <li><a href="{{ route('routeCreateTag') }}">Criar</a></li>
+                    </ul>
+                </li>
             </div>
 
             <div>
