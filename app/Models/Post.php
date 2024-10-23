@@ -22,5 +22,10 @@ class Post extends Model
     {
         return $this->hasMany(Rate::class);
     }
+
+    public function postable()
+    {
+        return $this->morphTo();
+    }
     
 }

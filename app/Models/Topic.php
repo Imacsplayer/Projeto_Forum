@@ -14,6 +14,11 @@ class Topic extends Post
         'description',
         'status',
     ];
+    
+    public function post()
+    {
+        return $this->morphOne(Post::class, 'postable');
+    }
 
     public function category()
     {
@@ -28,5 +33,4 @@ class Topic extends Post
     {
         return $this->hasMany(Comment::class);
     }
-           
 }

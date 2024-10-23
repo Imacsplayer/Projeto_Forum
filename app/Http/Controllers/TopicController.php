@@ -22,14 +22,20 @@ class TopicController extends Controller
 
             $request->validate([
                 'title' => 'required|string|max:255',
-                'description' => 'required|string|',
+                'description' => 'required|string|max:255',
                 'status' => 'required|string|',
+                'image' => 'required|string|',
             ]);
 
             $topic = Topic::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'status' => $request->status,
+                'image' => $request->image,
+            ]);
+
+            $post = new Post([
+                'image' => $request->input('image'),
             ]);
 
             return redirect()->route('welcome');
