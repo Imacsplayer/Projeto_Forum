@@ -87,7 +87,7 @@
             <div class="tag-content">
                 <div class="grid-container">
                     <div class="title">
-                        <h2>{{ $tag->tagtitle }}</h2>
+                        <h2>{{ $tag->title }}</h2>
                     </div>
                     <a href="{{ route('routeListTagById', $tag->id) }}" class="view-tag">
                         Visualizar &nbsp;

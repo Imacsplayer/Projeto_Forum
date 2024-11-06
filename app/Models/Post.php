@@ -11,7 +11,13 @@ class Post extends Model
 
     protected $fillable = [
         'image',
+        'user_id'
     ];
+    
+    public function postable()
+    {
+        return $this->morphTo();
+    }
 
     public function user()
     {
@@ -23,9 +29,4 @@ class Post extends Model
         return $this->hasMany(Rate::class);
     }
 
-    public function postable()
-    {
-        return $this->morphTo();
-    }
-    
 }

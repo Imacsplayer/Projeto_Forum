@@ -70,8 +70,8 @@
         <h2 class="create-tag-title">Adicione uma Tag!</h2>
         @csrf
         <div class="form-group">
-            <label for="tagtitle" class="form-label">Nome da Tag:</label>
-            <input type="text" id="tagtitle" name="tagtitle" class="form-input" value="{{ old('tagtitle') }}" required>
+            <label for="title" class="form-label">Nome da Tag:</label>
+            <input type="text" id="title" name="title" class="form-input" value="{{ old('title') }}" required>
             @error("title") <span class="error-message">{{$message}}</span> @enderror
         </div>
         <input type="submit" class="submit-button" value="Enviar">

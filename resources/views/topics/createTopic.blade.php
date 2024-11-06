@@ -80,13 +80,21 @@
             @error("description") <span class="error-message">{{$message}}</span> @enderror
 
             <label for="status" class="form-label">Status do Tópico:</label>
-            <input type="text" id="status" name="status" class="form-input" value="{{ old('status') }}" required>
-            @error("status") <span class="error-message">{{$message}}</span> @enderror
+            <select type="text" id="status" name="status" class="form-input" value="{{ old('status') }}" required>
+                <option value="1">Ativo</option>
+                <option value="0">Inativo</option>
+            </select>
             
             <label for="image" class="form-label">Imagem do Tópico:</label>
             <input type="text" id="image" name="image" class="form-input" value="{{ old('image') }}" required>
             @error("image") <span class="error-message">{{$message}}</span> @enderror
-
+            
+            <label for="category" class="form-label">Categoria do Tópico:</label>
+            <select name="category" id="category" name="category" class="form-input" value="{{ old('category') }}" required>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
         </div>
         <input type="submit" class="submit-button" value="Enviar">
     </form>
