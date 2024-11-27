@@ -28,12 +28,13 @@ class UserController extends Controller
     {
         if ($request->isMethod('GET')) {
 
-            return view('users.createUser');
+            return view('auth.registerUser');
         } else {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8',
+                'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
             $user = User::create([
@@ -43,6 +44,8 @@ class UserController extends Controller
                 'photo' => $request->photo ?? "",
                 'role' => $request->role ?? "user",
             ]);
+
+            $imageFile = $request->file('image');
 
             Auth::login($user);
 
@@ -66,6 +69,11 @@ class UserController extends Controller
         if ($request->password != '') {
             $request->validate(['password' => 'string|min:8']);
             $user->password = Hash::make($request->password);
+        }
+        if ($request->photo != '') {
+            $request->validate(['image' => 'image|mimes:jpeg,png,jpg,gif|max:2048']);
+            $imagePath = $request->file('image')->store('images', 'public');
+            $user->photo = $imagePath;
         }
         return redirect()->route('routeListUserById', [$user->id])
             ->with('message-sucess', 'Atualizado com sucesso');

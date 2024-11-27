@@ -7,7 +7,7 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 100vh;
+        height: 120vh;
     }
 
     h2 {
@@ -20,7 +20,7 @@
         align-items: center;
         padding: 80px;
         border-radius: 10px;
-        border: 1px solid black;
+        border: none;
     }
 
     form {
@@ -33,7 +33,7 @@
     }
 
     .form-input {
-        padding: 10px;
+        padding: 15px;
         outline: none;
         border: none;
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.253);
@@ -53,7 +53,7 @@
     <div class="container">
         <div class="form-container">
             <h2>Registrar</h2>
-            <form action="{{ route('routeRegisterUser') }}" method="post">
+            <form action="{{ route('routeRegister') }}" method="post">
                 @csrf
                 <input type="text" name="name" id="name" placeholder="Nome" class="form-input" value="{{ old('name') }}" required>
                 @error('name') <span>{{ $message }}</span>@enderror
@@ -65,6 +65,10 @@
                 @error('password') <span>{{ $message }}</span>@enderror
 
                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirme sua senha" class="form-input" required>
+
+                <input type="file" id="file" class="form-input">
+                @error('file') <span>{{ $message }}</span>@enderror
+
                 <input type="submit" class="form-btn" value="Registrar">
             </form>
         </div>
